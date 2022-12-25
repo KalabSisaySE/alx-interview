@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+"""the 0-pascal_triangle module
+defines a function `pascal_triangle`
+"""
+
+
 def pascal_triangle(n):
     """returns a pascal tirangle of size `n`"""
     if n > 0:

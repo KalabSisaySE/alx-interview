@@ -2,7 +2,6 @@
 """the `0-minoperations` module
 defines the function `minoperations`
 """
-from typing import List
 
 
 def minOperations(n: int) -> int:
@@ -12,20 +11,20 @@ def minOperations(n: int) -> int:
     if n > 1:
         # Prime factorizing n to get the
         # optimal size before the last copy operation
-        x: int = n
-        prm_fctrs: List = []
+        x = n
+        prm_fctrs = []
 
         while x > 1:
             divisor: int = 2
             while x % divisor != 0:
                 divisor += 1
             prm_fctrs.append(divisor)
-            x /= divisor
+            x = int(x / divisor)
         opt_size = prm_fctrs[-1]
 
         # calculate the number of operations
         num_operations: int = 0
-        num_H: List[str] = ["H"]
+        num_H = ["H"]
 
         # size to reach before the last copy
         while len(num_H) < opt_size:

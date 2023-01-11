@@ -5,8 +5,7 @@ defines the function `minoperations`
 
 
 def minOperations(n):
-    """returns the minimum number of operations
-    required to reach `n` numbers of `H`"""
+    """returns the minimum num of operations needed to reach `n` nums of `H`"""
 
     if n > 1:
         # Prime factorizing n to get the

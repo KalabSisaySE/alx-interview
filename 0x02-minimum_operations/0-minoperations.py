@@ -4,7 +4,7 @@ defines the function `minoperations`
 """
 
 
-def minOperations(n: int) -> int:
+def minOperations(n):
     """returns the minimum number of operations
     required to reach `n` numbers of `H`"""
 

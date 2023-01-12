@@ -22,7 +22,7 @@ def minOperations(n):
         opt_size = prm_fctrs[-1]
 
         # calculate the number of operations
-        num_operations: int = 0
+        num_operations = 0
         num_H = ["H"]
 
         # size to reach before the last copy

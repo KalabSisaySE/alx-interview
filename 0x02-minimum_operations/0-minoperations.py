@@ -42,6 +42,6 @@ def minOperations(n):
         # num_operations += 1  # due to the second Copy_All operation
 
         # return num_operations
-        return reduce(lambda x , y: x + y, prm_fctrs)
+        return reduce(lambda x, y: x + y, prm_fctrs)
 
     return 0

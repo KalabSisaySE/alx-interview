@@ -4,6 +4,9 @@ defines the function `minoperations`
 """
 
 
+from functools import reduce
+
+
 def minOperations(n):
     """returns the minimum num of operations needed to reach `n` nums of `H`"""
 
@@ -21,23 +24,24 @@ def minOperations(n):
             x = int(x / divisor)
         opt_size = prm_fctrs[-1]
 
-        # calculate the number of operations
-        num_operations = 0
-        num_H = ["H"]
+        # # calculate the number of operations
+        # num_operations = 0
+        # num_H = ["H"]
 
-        # size to reach before the last copy
-        while len(num_H) < opt_size:
-            num_H.append("H")
-            num_operations += 1
-        num_operations += 1  # due to the fist Copy_All operation
+        # # size to reach before the last copy
+        # while len(num_H) < opt_size:
+        #     num_H.append("H")
+        #     num_operations += 1
+        # num_operations += 1  # due to the fist Copy_All operation
 
-        # after optimal size is reached
-        copy = num_H.copy()
-        while len(num_H) < n:
-            num_H.extend(copy)
-            num_operations += 1
-        num_operations += 1  # due to the second Copy_All operation
+        # # after optimal size is reached
+        # copy = num_H.copy()
+        # while len(num_H) < n:
+        #     num_H.extend(copy)
+        #     num_operations += 1
+        # num_operations += 1  # due to the second Copy_All operation
 
-        return num_operations
+        # return num_operations
+        return reduce(lambda x , y: x + y, prm_fctrs)
 
     return 0

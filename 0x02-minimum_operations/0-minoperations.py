@@ -14,7 +14,7 @@ def minOperations(n):
         prm_fctrs = []
 
         while x > 1:
-            divisor: int = 2
+            divisor = 2
             while x % divisor != 0:
                 divisor += 1
             prm_fctrs.append(divisor)

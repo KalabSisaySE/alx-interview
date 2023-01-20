@@ -2,9 +2,9 @@
 """the `0-stats` module
 read logs from stdin and parses it to compute some metrics
 """
+from dateutil import parser
 from functools import reduce
 import re
-from dateutil import parser
 import sys
 
 

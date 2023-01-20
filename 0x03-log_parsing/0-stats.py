@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""the `0-stats` module
-read logs from stdin and parses it to compute some metrics
-"""
+"""reads logs from stdin and parses it to compute some metrics"""
 from dateutil import parser
 from functools import reduce
 import re
@@ -18,7 +16,7 @@ try:
             return False
 
     def print_metrics():
-        """prints metrics"""
+        """analyzes `logs` and prints the metrics"""
         file_sizes = list(map(lambda x: x[3], logs))
         file_size = reduce(lambda x, y: x + y, file_sizes)
         all_status_codes = list(map(lambda x: x[2], logs))

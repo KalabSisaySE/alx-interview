@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""the 0-stats module
+"""the `0-stats` module
 read logs from stdin and parses it to compute some metrics
 """
 from functools import reduce
@@ -66,7 +66,7 @@ try:
                 ipadddress,
             )
 
-            # if every section of the log is valid store the log in logs list
+            # if every section of the log is valid store the log in the logs list
             if ip_valid and \
                date_valid(date) and \
                header_valid and \

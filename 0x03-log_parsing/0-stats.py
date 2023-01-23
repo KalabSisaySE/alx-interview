@@ -33,9 +33,7 @@ def print_metrics():
 
 
 try:
-
     logs = []
-    in_iter = iter(sys.stdin)
     for ln in sys.stdin:
         if all(char in ln for char in ["-", '"']):
             # parse the log into components

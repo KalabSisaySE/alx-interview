@@ -85,4 +85,5 @@ try:
         print_metrics()
 
 except KeyboardInterrupt:
-    print_metrics()
+    if sys.stdin:
+        print_metrics()

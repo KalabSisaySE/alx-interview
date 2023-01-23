@@ -83,11 +83,11 @@ if not sys.stdin.isatty():
                 # if every section of the log is valid
                 # store the log in the logs list
                 if (
-                    ip_valid
-                    and date_valid(date)
-                    and header_valid
-                    and status_valid
-                    and size_valid
+                    ip_valid and
+                    date_valid(date) and
+                    header_valid and
+                    status_valid and
+                    size_valid
                 ):
                     temp = [
                         ipadddress,

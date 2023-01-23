@@ -19,17 +19,19 @@ def date_valid(date):
 
 def print_metrics():
     """analyzes `logs` and prints the metrics"""
-    file_sizes = list(map(lambda x: x[3], logs))
-    file_size = reduce(lambda x, y: x + y, file_sizes)
-    all_status_codes = list(map(lambda x: x[2], logs))
-    # gets the uniques status codes from list and sorts it
-    # since set() only stores unique values
-    unique_status_codes = list(set(all_status_codes))
-    unique_status_codes.sort()
+    # only execute if stdin if pipline or file redirection
+    if not sys.stdin.isatty():
+        file_sizes = list(map(lambda x: x[3], logs))
+        file_size = reduce(lambda x, y: x + y, file_sizes)
+        all_status_codes = list(map(lambda x: x[2], logs))
+        # gets the uniques status codes from list and sorts it
+        # since set() only stores unique values
+        unique_status_codes = list(set(all_status_codes))
+        unique_status_codes.sort()
 
-    print("File size: {}".format(file_size))
-    for stat_code in unique_status_codes:
-        print("{}: {}".format(stat_code, all_status_codes.count(stat_code)))
+        print("File size: {}".format(file_size))
+        for stat_code in unique_status_codes:
+            print("{}: {}".format(stat_code, all_status_codes.count(stat_code)))
 
 
 try:
@@ -81,9 +83,7 @@ try:
                 logs.append(temp)
                 if len(logs) % 10 == 0:
                     print_metrics()
-    if sys.stdin:
-        print_metrics()
+    print_metrics()
 
 except KeyboardInterrupt:
-    if sys.stdin:
-        print_metrics()
+    print_metrics()

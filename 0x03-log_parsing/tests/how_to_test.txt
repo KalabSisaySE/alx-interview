@@ -1,0 +1,6 @@
+cat <file_name> | ./<python_script_name>
+cat file_4 | ./0-stats.py
+
+- 0-generator.py from example
+- file_0 - file_5 (test cases)
+- file_3 empty file test

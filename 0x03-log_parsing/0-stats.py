@@ -43,7 +43,6 @@ try:
             date = ln[ln.find("[") + 1: ln.find("]")].strip()
             header = ln[ln.find('"') + 1: ln.rfind('"')].strip()
             status_size = ln[ln.rfind('"') + 1:].strip().split(" ")
-
             # validate each component
             header_valid = header == "GET /projects/260 HTTP/1.1"
             size_valid = re.search(
@@ -74,7 +73,6 @@ try:
                 and status_valid
                 and size_valid
             ):
-
                 temp = [
                     ipadddress,
                     date,
@@ -82,7 +80,7 @@ try:
                     int(status_size[1])
                 ]
                 logs.append(temp)
-                if len(logs) % 10 == 0:
+                if len(logs) % 10 == 0 or len(logs) == 1:
                     print_metrics()
 
 except KeyboardInterrupt:

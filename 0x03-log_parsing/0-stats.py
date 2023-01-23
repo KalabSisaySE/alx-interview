@@ -74,7 +74,6 @@ try:
                 and status_valid
                 and size_valid
             ):
-                print('ALL VALID')
                 temp = [
                     ipadddress,
                     date,

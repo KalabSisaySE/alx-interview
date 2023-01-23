@@ -81,8 +81,7 @@ try:
                     int(status_size[1])
                 ]
                 logs.append(temp)
-                next_item = next(in_iter, 'end')
-                if len(logs) % 10 == 0 or next_item == 'end':
+                if len(logs) % 10 == 0:
                     print_metrics()
 
 except KeyboardInterrupt:

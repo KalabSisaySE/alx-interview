@@ -17,10 +17,10 @@ def date_valid(date):
         return False
 
 
-def print_metrics():
+def print_metrics(logs):
     """analyzes `logs` and prints the metrics"""
-    # redirected from file or pipe
-    if not sys.stdin.isatty():
+    # if logs is not empty
+    if type(logs) is list and len(logs) > 0:
         file_sizes = list(map(lambda x: x[3], logs))
         file_size = reduce(lambda x, y: x + y, file_sizes)
         all_status_codes = list(map(lambda x: x[2], logs))
@@ -87,7 +87,7 @@ if not sys.stdin.isatty():
                     ]
                     logs.append(temp)
                     if len(logs) % 10 == 0:
-                        print_metrics()
-
+                        print_metrics(logs=logs)
+        print_metrics(logs=logs)
     except KeyboardInterrupt:
         print_metrics()

@@ -35,6 +35,8 @@ def print_metrics(logs):
                 stat_code,
                 all_status_codes.count(stat_code))
             )
+    else:
+        print("File size: 0")
 
 
 # if redirected from file or pipe
@@ -54,16 +56,19 @@ if not sys.stdin.isatty():
                 size_valid = re.search(
                     r"102[0-4]|10[0-1][0-9]|[0-9]?[0-9]?[0-9]", status_size[1]
                 )
-                status_valid = int(status_size[0]) in [
-                    200,
-                    301,
-                    400,
-                    401,
-                    403,
-                    404,
-                    405,
-                    500,
-                ]
+                if status_size[0].isnumeric():
+                    status_valid = int(status_size[0]) in [
+                        200,
+                        301,
+                        400,
+                        401,
+                        403,
+                        404,
+                        405,
+                        500,
+                    ]
+                else:
+                    status_valid = False
                 ip_valid = re.search(
                     r"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}"
                     r"(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",

@@ -22,8 +22,18 @@ def print_metrics(logs):
     # if logs is not empty
     if type(logs) is list and len(logs) > 0:
         file_sizes = list(map(lambda x: x[3], logs))
+        valid_ip_logs = filter(lambda x: x[2] in [
+                        200,
+                        301,
+                        400,
+                        401,
+                        403,
+                        404,
+                        405,
+                        500,
+                    ], logs)
         file_size = reduce(lambda x, y: x + y, file_sizes)
-        all_status_codes = list(map(lambda x: x[2], logs))
+        all_status_codes = list(map(lambda x: x[2], valid_ip_logs))
         # gets the uniques status codes from list and sorts it
         # since set() only stores unique values
         unique_status_codes = list(set(all_status_codes))
@@ -57,24 +67,19 @@ if not sys.stdin.isatty():
                     r"102[0-4]|10[0-1][0-9]|[0-9]?[0-9]?[0-9]", status_size[1]
                 )
                 if status_size[0].isnumeric():
-                    status_valid = int(status_size[0]) in [
-                        200,
-                        301,
-                        400,
-                        401,
-                        403,
-                        404,
-                        405,
-                        500,
-                    ]
+                    status_valid = True
                 else:
-                    status_valid = False
-                ip_valid = re.search(
-                    r"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}"
-                    r"(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",
-                    ipadddress,
-                )
+                    status_size[0] = 0
 
+                # if ip contains a single numeric characther
+                # then check for pattern
+                ip_valid = True
+                if True in [char.isdigit() for char in ipadddress]:
+                    ip_valid = re.search(
+                        r"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}"
+                        r"(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",
+                        ipadddress,
+                    )
                 # if every section of the log is valid
                 # store the log in the logs list
                 if (

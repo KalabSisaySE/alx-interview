@@ -83,6 +83,7 @@ try:
                 logs.append(temp)
                 if len(logs) % 10 == 0:
                     print_metrics()
+    print_metrics()
 
 except KeyboardInterrupt:
     print_metrics()

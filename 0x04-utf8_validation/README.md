@@ -50,3 +50,5 @@ carrie@ubuntu:~/0x04-utf8_validation$
 - **Main**
   - [UTF-8](https://en.wikipedia.org/wiki/UTF-8)
   - [Characters, Symbols, and the Unicode MiracleCharacters, Symbols, and the Unicode Miracle](https://www.youtube.com/watch?v=MijmeoH9LT4)
+
+**Better Explanation**: [Here](https://leetcode.com/problems/utf-8-validation/)

@@ -31,12 +31,7 @@ def validUTF8(data):
                     nb_of_bytes = encoding[i].index('0')
                     if nb_of_bytes > 4:
                         return False
-                    if i + 1 == i + nb_of_bytes:
-                        indexes_with_10.extend(
-                            range(i + 1, i + nb_of_bytes + 1)
-                        )
-                    else:
-                        indexes_with_10.extend(range(i + 1, i + nb_of_bytes))
+                    indexes_with_10.extend(range(i + 1, i + nb_of_bytes))
                     # jump to the next new characther
                     i = i + nb_of_bytes
                 except ValueError:

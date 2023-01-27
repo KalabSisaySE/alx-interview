@@ -4,26 +4,18 @@
 
 def canUnlockAll(boxes):
     """determines of all `boxes` can be unlocked"""
-    unlocked = [0]  # boxes whose keys are found
-    searched = []  # boxes opened and searched for more keys
-    new_key = []  # temporary container for new keys
+    keys = {0}  # boxes whose keys are found
+    searched = set()  # boxes opened and searched for more keys
 
-    # since `box 0` can be opened without a key
-    for key in boxes[0]:
-        if key in range(len(boxes)) and key not in unlocked:
-            unlocked.append(key)
-    searched.append(0)
+    while len(keys) > 0:
+        key = keys.pop()
+        print(f'key: {key}')
+        # if key is valid and not searched
+        if key < len(boxes) and key >= 0 and key not in searched:
+            searched.add(key)
+            for i in boxes[key]:
+                # if key inside the box is valid and not searched
+                if i < len(boxes) and i >= 0 and i not in searched:
+                    keys.add(i)
 
-    # search for more keys until all boxes whose keys are found are all opened
-    while len(unlocked) > len(searched):
-        for key in unlocked:
-            if key not in searched:
-                for elm in boxes[key]:
-                    if elm in range(len(boxes)) and elm not in unlocked:
-                        new_key.append(elm)
-                searched.append(key)
-        unlocked.extend(new_key)
-        new_key.clear()
-
-    unlocked.sort()
-    return unlocked == list(range(len(boxes)))
+    return searched == set(range(len(boxes)))

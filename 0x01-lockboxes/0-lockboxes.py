@@ -9,7 +9,6 @@ def canUnlockAll(boxes):
 
     while len(keys) > 0:
         key = keys.pop()
-        print(f'key: {key}')
         # if key is valid and not searched
         if key < len(boxes) and key >= 0 and key not in searched:
             searched.add(key)

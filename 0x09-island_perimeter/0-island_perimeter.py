@@ -32,26 +32,27 @@ def island_perimeter(grid):
             for curr_col, elm in enumerate(row):
                 if elm == 1:
                     # check top and bottom
-                    if curr_row >= 1:
-                        if grid[curr_row - 1][curr_col] == 0:
-                            perimeter = perimeter + 1
+                    if curr_row == 0:
+                        perimeter = perimeter + 1
+                    if curr_row == (len(grid) - 1):
+                        perimeter = perimeter + 1
                     if curr_row < len(grid) - 1:
                         if grid[curr_row + 1][curr_col] == 0:
                             perimeter = perimeter + 1
+                    if curr_row >= 1:
+                        if grid[curr_row - 1][curr_col] == 0:
+                            perimeter = perimeter + 1
+
                     # check left and right
+                    if curr_col == len(row) - 1:
+                        perimeter = perimeter + 1
+                    if curr_col == 0:
+                        perimeter = perimeter + 1
                     if curr_col >= 1:
                         if grid[curr_row][curr_col - 1] == 0:
                             perimeter = perimeter + 1
                     if curr_col < len(row) - 1:
                         if grid[curr_row][curr_col + 1] == 0:
                             perimeter = perimeter + 1
-                    
-                    # if no more adjacent neighbors stop
-                    if curr_row + 1 < len(grid) and curr_col + 1 < len(row):
-                        right_is_zero = grid[curr_row][curr_col + 1] == 0
-                        bottom_is_zero = grid[curr_row + 1][curr_col] == 0
-                        if bottom_is_zero and right_is_zero:
-                            break
-        return perimeter
 
-    return 0
+        return perimeter

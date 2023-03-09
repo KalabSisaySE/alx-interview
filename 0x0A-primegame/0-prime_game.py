@@ -25,6 +25,10 @@ def is_prime(n):
 def isWinner(x, nums):
     """determine the winner of the game for `x` rounds
     and `n` lists"""
+    if not x or type(x) is not int:
+        return
+    if not nums or type(nums) is not list:
+        return
     ben = 0
     maria = 0
     # make sure there no index out of range error
@@ -56,7 +60,6 @@ def isWinner(x, nums):
             ben = ben + 1
         elif step != 0 and step % 2 != 0:
             maria = maria + 1
-
     if maria > ben:
         return "Maria"
     elif ben > maria:

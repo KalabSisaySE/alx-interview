@@ -35,25 +35,23 @@ def isWinner(x, nums):
     rounds = x if x <= len(nums) else len(nums)
     for i in range(rounds):
         numbers = [num for num in range(1, nums[i] + 1)]
-        # print(f"numbers: {numbers}")
         step = 0
         j = 0
         while j < len(numbers):
-            # print(f"\tj: {j}")
             if is_prime(numbers[j]):
-                # print(f"\t\tyes is_prime: {j}")
                 current = numbers[j]
                 step = step + 1
                 factors = []
                 multiplier = 1
+                # get all the factors of the prime
                 while True:
                     f = current * multiplier
                     if f > numbers[-1]:
                         break
                     factors.append(f)
                     multiplier = multiplier + 1
+                # adjust the index after the list is changed
                 if numbers.index(current) == j:
-                    # print(f"\t\tTrue")
                     j = j - 1
                 for factor in factors:
                     try:
